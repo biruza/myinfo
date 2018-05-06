@@ -9,6 +9,29 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<div id="sidebar">
+  		<ul>
+  			<li class="category">Category</li>
+  			<li class="">xxxx</li>
+  			<li class="">xxxx</li>
+  			<li class="">User Login </li>
+  		</ul>
+  	</div>
+
+  	<div id="main_content">
+  		<div id="header">
+  			<p>Post Feed</p>
+  			<div class="buttons">
+  				<button class="button"><%= link_to "สร้างโพสใหม่" , new_post_path %></button>
+  			</div>
+  		</div>
+
+  		<% flash.each do |name, msq| %>
+  			<%= content_tag(:div, msq, class: "alert") %>
+  		<% end %>
+  		<%= yield %>
+  	</div>
+  		
+    
   </body>
 </html>
