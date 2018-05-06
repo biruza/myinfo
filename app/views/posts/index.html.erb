@@ -1,5 +1,8 @@
 <% @post.each do |post|  %>
 <div class="post_wrapper">
+	<% if post.image_file_name %>
+	<%= link_to (image_tag post.image.url(:medium)), post %>
+	<% end %>
 	<h2 class="title"><%= link_to post.title, post %></h2>
 	<p class="date">
 	โพสเมื่อ : <%= time_ago_in_words(post.created_at) %>
