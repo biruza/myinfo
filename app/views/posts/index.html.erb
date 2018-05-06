@@ -4,6 +4,6 @@
 	<p class="date">
 	โพสเมื่อ : <%= time_ago_in_words(post.created_at) %>
 </p>
-	<p class="body"><%= post.body %></p>
+	<p class="body"><%= truncate(post.body, length:100) %></p>
 </div>
 <% end %>
