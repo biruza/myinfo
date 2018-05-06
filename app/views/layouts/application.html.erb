@@ -14,7 +14,11 @@
   			<li class="category">MyInfo</li>
   			<li class=""><%= link_to 'Posts' , posts_path %></li>
   			<li class=""><%= link_to 'About Us' , pages_path %></li>
-  			<li class="">User Login </li>
+  			<% if !user_signed_in? %>
+  			<li class=""><%= link_to 'เข้าสู่ระบบ' , new_user_session_path %></li>
+  			<% else %>
+  			<li class=""><%= link_to "ออกจากระบบ" , destroy_user_session_path, method: :delete %></li>
+  			<% end %>
   		</ul>
   	</div>
 
@@ -22,8 +26,12 @@
   		<div id="header">
   			<p>Post Feed</p>
   			<div class="buttons">
-  				<button class="button"><%= link_to "สร้างโพสใหม่" , new_post_path %></button>
-  				
+  				<% if user_signed_in? %>
+  					<button class="button"><%= link_to "สร้างโพสใหม่" , new_post_path %></button>
+  				<% end %>
+
+
+
   			</div>
   		</div>
 

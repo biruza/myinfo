@@ -6,6 +6,9 @@
 	<p class="body">
 		<%= @post.body %>
 	</p>
-	<%= link_to 'แก้ไข' , edit_post_path(@post) %>
-	<%= link_to 'ลบ' , post_path(@post), method: :delete, data: { confirm: 'ต้องการลบ'} %>
+	<% if user_signed_in? %>
+		<%= link_to 'แก้ไข' , edit_post_path(@post) %>
+		<%= link_to 'ลบ' , post_path(@post), method: :delete, data: { confirm: 'ต้องการลบ'} %>
+	<% end %>
+	
 </div>
