@@ -11,9 +11,9 @@
   <body>
   	<div id="sidebar">
   		<ul>
-  			<li class="category">Category</li>
-  			<li class="">xxxx</li>
-  			<li class="">xxxx</li>
+  			<li class="category">MyInfo</li>
+  			<li class=""><%= link_to 'Posts' , posts_path %></li>
+  			<li class=""><%= link_to 'About Us' , pages_path %></li>
   			<li class="">User Login </li>
   		</ul>
   	</div>
@@ -23,6 +23,7 @@
   			<p>Post Feed</p>
   			<div class="buttons">
   				<button class="button"><%= link_to "สร้างโพสใหม่" , new_post_path %></button>
+  				
   			</div>
   		</div>
 
