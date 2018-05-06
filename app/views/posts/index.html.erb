@@ -1,0 +1,11 @@
+<h1>List of Posts</h1>
+
+<% @post.each do |post|  %>
+<div class="post_wrapper">
+	<h2 class="title"><%= post.title %></h2>
+	<p class="date">
+	โพสเมื่อ : <%= time_ago_in_words(post.created_at) %>
+</p>
+	<p class="body"><%= post.body %></p>
+</div>
+<% end %>
