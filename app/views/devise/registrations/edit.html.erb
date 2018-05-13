@@ -32,6 +32,27 @@
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
 
+    <div class="field">
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname,required: true, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname,required: true, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <% if :avatar %>
+        <%= image_tag(current_user.avatar.url(:thumb)) %>
+      <% end %>
+    </div>
+
+    <div class="field">
+        <%= f.label :avatar, class: ''  %>
+        <%= f.file_field :avatar , class: 'form-control' %>
+    </div
+
     <div class="actions">
       <%= f.submit "Update" %>
     </div>

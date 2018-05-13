@@ -1,0 +1,113 @@
+<!-- START Top Navbar-->
+<nav role="navigation" class="navbar topnavbar">
+   <!-- START navbar header-->
+   <div class="navbar-header">
+      <%= link_to (posts_path) , class: "navbar-brand" do %>
+         <div class="brand-logo">
+            <img src="<%= image_path('logo_tru_50.png') %>" alt="App Logo" class="img-responsive" />
+         </div>
+         <div class="brand-logo-collapsed">
+            <img src="<%= image_path('logo_tru_72.png') %>" alt="App Logo" class="img-responsive" />
+         </div>
+      <% end %>
+   </div>
+   <!-- END navbar header-->
+   <!-- START Nav wrapper-->
+   <div class="nav-wrapper">
+      <!-- START Left navbar-->
+      <ul class="nav navbar-nav hidden-sm hidden-xs">
+         <!-- Search icon-->
+         <li>
+            <form action="" class="form">
+               <div class="input-group input-group-sm pt pb" style="width: 260px; display: inline-block;">
+                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:200px" class="form-control input-lg radius-clear">
+                  <span class="input-group-btn">
+                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
+                        <strong>ค้นหา</strong>
+                     </button>
+                  </span>
+               </div>
+            </form>
+         </li>
+         <!-- END lock screen-->
+      </ul>
+      <ul class="nav navbar-nav hidden-xs hidden-md hidden-lg">
+         <!-- Search icon-->
+         <li>
+            <form action="" class="form">
+               <div class="input-group input-group-sm pt pb" style="width: 200px; display: inline-block;">
+                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:150px" class="form-control input-lg radius-clear">
+                  <span class="input-group-btn">
+                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
+                        <strong>ค้นหา</strong>
+                     </button>
+                  </span>
+               </div>
+            </form>
+         </li>
+         <!-- END lock screen-->
+      </ul>
+      <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg bg-gray-light col-md-12">
+         <!-- Search icon-->
+         <li>
+            <form action="" class="form">
+               <div class="input-group input-group-sm pt pb ml" style="width: 100%; display: inline-block;">
+                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:90%" class="form-control input-lg radius-clear">
+                  <span class="input-group-btn">
+                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
+                        <strong>ค้นหา</strong>
+                     </button>
+                  </span>
+               </div>
+            </form>
+         </li>
+         <!-- END lock screen-->
+      </ul>
+      <!-- END Left navbar-->
+      <!-- START Right Navbar-->
+      <ul class="nav navbar-nav navbar-right">
+
+         <% if !user_signed_in? %>
+         <li>
+            <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+            <%= link_to (new_user_session_path) ,id: "user-block-toggle" , :"data-toggle" => "collapse"  do %>
+               <em class="icon-login"></em> เข้าสู่ระบบ
+            <% end %>
+         </li>
+         <% else %>
+         <li>
+            <%= link_to (new_post_path) ,class: "button" do %>
+               <em class="icon-plus"></em> เพิ่มข้อมูล
+            <% end %>
+         </li>
+         <li>
+            <%= link_to (edit_user_registration_path) ,class: "button" do %>
+               <em class="icon-note"></em> <span class="hidden-sm">แก้ไขข้อมูลส่วนตัว</span>
+            <% end %>
+         </li>
+         <li>
+            <%= link_to (profile_path(current_user.id)), class: "pt-sm pb-sm" do %>
+            <div class="user-block-picture">
+               <div class="user-block-status">
+                  <%= image_tag(current_user.avatar.url(:thumb), class: "img-thumbnail img-circle" ,width: "40", height: "40") %>
+                  <span>
+                     <%= link_to (profile_path(current_user.id)) do %>
+                        <%= current_user.firstname %> <%= current_user.surname %>
+                        <% end %>      
+                  </span>
+               </div>
+            </div>
+            <% end %>
+         </li>
+         <li>
+            <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+            <%= link_to (destroy_user_session_path) , method: :delete do %>
+               <em class="icon-logout"></em> <span class="hidden-md hidden-sm">ออกจากระบบ</span>
+            <% end %>
+         </li>
+         <% end %>
+      </ul>
+      <!-- END Right Navbar-->
+   </div>
+   <!-- END Nav wrapper-->
+</nav>

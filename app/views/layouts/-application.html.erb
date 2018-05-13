@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myinfo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div id="sidebar">
+  		<ul>
+  			<li class="category">MyInfo</li>
+  			<li class=""><%= link_to 'Posts' , posts_path %></li>
+  			<li class=""><%= link_to 'Profiles' , profiles_path %></li>
+  			<% if !user_signed_in? %>
+  			<li class=""><%= link_to 'เข้าสู่ระบบ' , new_user_session_path %></li>
+  			<% else %>
+  			<li class=""><%= link_to "ออกจากระบบ" , destroy_user_session_path, method: :delete %></li>
+  			<% end %>
+  		</ul>
+  	</div>
+
+  	<div id="main_content">
+  		<div id="header">
+  			<p>Post Feed</p>
+  			<div class="buttons">
+  				<% if user_signed_in? %>
+  					<button class="button"><%= link_to "สร้างโพสใหม่" , new_post_path %></button>
+  				<% end %>
+
+
+
+  			</div>
+  		</div>
+
+  		<% flash.each do |name, msq| %>
+  			<%= content_tag(:div, msq, class: "alert") %>
+  		<% end %>
+  		<%= yield %>
+  	</div>
+  		
+    
+  </body>
+</html>

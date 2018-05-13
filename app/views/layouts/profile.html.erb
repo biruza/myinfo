@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App + Ruby on Rails">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <title>MyInfo : Website รวม Profile บุคลากร</title>
+   <!-- =============== VENDOR STYLES ===============--> 
+   <!-- =============== VIEW VENDOR STYLES ===============--> 
+   <!-- =============== APP STYLES ===============-->
+   <%= stylesheet_link_tag 'application', media: 'all', id: "maincss" %>
+   <%= csrf_meta_tags %>
+   <link rel="stylesheet" media="all" href="<%= asset_path('themes/theme-e.css') %>" />
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+ 
+</head>
+
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <%= render partial: "layouts/partials/topnavbar" %>
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <%= render partial: "layouts/partials/sidebar_profile" %>
+      </aside>
+     <!-- offsidebar-->
+      <aside class="offsidebar hide"> 
+      </aside>
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <%= yield %>
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer>
+         <%= render partial: "layouts/partials/footer" %>
+      </footer>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============--> 
+   <!-- =============== VIEW VENDOR SCRIPTS ===============--> 
+   <!-- =============== APP SCRIPTS ===============-->
+   <%= javascript_include_tag 'application' %>
+
+   <%= yield :body_area %> 
+
+</body>
+
+</html>

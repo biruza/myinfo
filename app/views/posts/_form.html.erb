@@ -1,35 +1,53 @@
-<div id="post_content">
+<div class="col-md-12">
+	<div class="panel panel-default">
 
-	<%= form_for @post do |f| %>
-		<% if @post.errors.any? %>
-			<div id="errors">
-				<h2><%= pluralize(@post.errors.count, "error") %> xxxx </h2>
-				<ul>
-					<% @post.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
+		<div class="panel-body">
+			<%= form_for @post do |f| %>
+				<% if @post.errors.any? %>
+					<div id="errors">
+						<h2><%= pluralize(@post.errors.count, "error") %> xxxx </h2>
+						<ul>
+							<% @post.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<div class="form-group">
+					<%= f.label "หัวเรื่อง" %><br>
+					<%= f.text_field :title, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<% @categories.each do |category| %>
+						<%= check_box_tag "post[categories][]", category.id , 
+						if @post.categories 
+							@post.categories.include?(category.id.to_s) , class: 'checkbox-inline'
+						else 
+							false , class: 'checkbox-inline'
+						end 
+						 %> <%= category.title %>
+			      		<% end %> 
+				</div>
+				<div class="form-group">
+					<% if @post.image_file_name %>
+						<%= image_tag @post.image.url(:medium) %>
 					<% end %>
-				</ul>
-			</div>
-		<% end %>
-		<p>
-			<%= f.label :title %><br>
-			<%= f.text_field :title %>
-		</p>
+						<%= f.file_field :image ,class: "icon-span-filestyle glyphicon glyphicon-folder-open btn btn-default" %>
+				</div>
 
-		<p>
-			<%= f.label :body %><br>
-			<%= f.text_area :body %>
-		</p>
+				<div class="form-group">
+					<%= f.label "รายละเอียดอื่น ๆ " %><br>
+					<%= f.text_area :body, class: "form-control" %>
+				</div>
+				<div class="form-group">
+		    		<%= f.label :tag_list, 'Tag ใช้สำหรับใส่คำค้นหา (ถ้ามีหลายคำ ให้ใช้ , ในการแบ่งคำ เช่น โครงการร่วมใจ,งานวิชาการ)' %><br/>
+		    		<input name="post[tag_list]" value="<%= @post.tag_list %>" type="text" />
+				</div>
 
-		<p>
-			<% if @post.image_file_name %>
-				<%= image_tag @post.image.url() , class: "" %>
+				<div class="form-group">
+					<%= f.submit :class => 'btn btn-primary' %>
+				</div>
 			<% end %>
-			<%= f.file_field :image %>
-		</p>
-
-		<p>
-			<%= f.submit %>
-		</p>
-	<% end %>
+		</div>
+	</div>
 </div>

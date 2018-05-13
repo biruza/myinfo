@@ -1,13 +1,56 @@
-<% @post.each do |post|  %>
-<div class="post_wrapper">
-	<% if post.image_file_name %>
-	<%= link_to (image_tag post.image.url(:medium)), post %>
+<h3>Post List</h3>
+<div class="row">
+	<% @post.each do |post|  %>
+
+		<div class="col-lg-4">
+            <div class="panel">
+              <% if post.image_file_name %>
+                  <% if params[:id] %>
+					       <%= link_to (image_tag post.image.url(:medium)), "#{profile_path}/posts/#{post.id}", class: "img-responsive" %>
+                 <% elsif params[:profile_id] %>
+                      <%= link_to (image_tag post.image.url(:medium)), "#{profile_path(params[:profile_id])}/posts/#{post.id}", class: "img-responsive" %>
+				     <% else %>
+					       <%= link_to (image_tag post.image.url(:medium)), "/posts/#{post.id}", class: "img-responsive" %>
+				     <% end %>
+				<% end %>
+               <div class="panel-body">
+                  <p class="clearfix">
+                     <span class="pull-left">
+                        <small class="mr-sm">
+                        	โดย 
+                        	<%= link_to (profile_path(post.user.id)) do %>
+                        		<%= post.user.firstname %> <%= post.user.surname %>
+                        	<% end %>
+                        </small>
+                        <small class="mr-sm">โพสเมื่อ : <%= time_ago_in_words(post.created_at) %> ที่แล้ว</small>
+                     </span>
+
+                     <!--
+                     <span class="pull-right">
+                        <small>
+                           <strong>56</strong>
+                           <span>Comments</span>
+                        </small>
+                     </span>
+                 -->
+                  </p>
+                  <h4>
+
+					<% if params[:id] %>
+						<%= link_to post.title, "#{profile_path}/posts/#{post.id}" %>
+					<% elsif params[:profile_id] %>
+                  <%= link_to post.title, "#{profile_path(params[:profile_id])}/posts/#{post.id}", class: "img-responsive" %>
+               <% else %>
+						<%= link_to post.title, "/posts/#{post.id}" %>
+					<% end %>
+                  	
+                  </h4>
+                  <p><%= truncate(post.body, length:100) %></p>
+               </div>
+            </div>
+         </div>
+
 	<% end %>
-	<h2 class="title"><%= link_to post.title, post %></h2>
-	<p class="date">
-	โพสเมื่อ : <%= time_ago_in_words(post.created_at) %>
-</p>
-	<p class="body"><%= truncate(post.body, length:100) %></p>
-	
 </div>
-<% end %>
+
+

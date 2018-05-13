@@ -1,0 +1,91 @@
+<% #profile_find(params[:id]) %>
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+   <nav class="sidebar" data-sidebar-anyclick-close="">
+      <!-- START sidebar nav-->
+      <ul class="nav">
+       <!-- Iterates over all sidebar items-->
+       <li class="bb mt">
+          <%= link_to(raw("<em class='icon-speedometer'></em><span>รวมโปรไฟล์</span>") , profiles_path) %>
+        </li>
+        <li class="bb mt">
+          <%= link_to(raw("<em class='icon-speedometer'></em><span>รวมโพส</span>") , posts_path) %>
+        </li>
+
+        <li class="bb mb-xl">
+          <div class="panel-body">
+           <div class="">
+              <div class="text-center">
+                 <%= image_tag(@user.avatar.url(:medium), class: "img-thumbnail img-circle thumb128") %>
+              </div>
+           </div>
+           <div class="text-center mt-xl">
+          
+              <h4 class="m0 text-white"><%= @user.firstname %> <%= @user.surname %></h4>
+              <p class="text-muted">อาจารย์ประจำวิชา</p>
+           </div>
+           <div class="panel-body text-center text-muted">
+              <div class="row row-table">
+                 <div class="col-xs-4 br">
+                    <h4 class="m0 text-white">400</h4>
+                    <p class="m0">กิจกรรม</p>
+                 </div>
+                 <div class="col-xs-4 br">
+                    <h4 class="m0 text-white">2000</h4>
+                    <p class="m0">บทความ</p>
+                 </div>
+                 <div class="col-xs-4">
+                    <h4 class="m0 text-white">500</h4>
+                    <p class="m0">เอกสาร</p>
+                 </div>
+              </div>
+           </div>
+          </div>  
+        </li>
+
+        <li class="<%= 'active' if controller_name == ('profiles') %>">
+            <% if params[:profile_id] %>
+              <% profile_id = params[:profile_id] %>
+            <% else %>
+              <% profile_id = params[:id] %>
+            <% end %>
+            <%= link_to (profile_path(profile_id)), title: "หน้าแรก" do %>
+                <em class="icon-speedometer"></em>
+                <span>หน้าแรก</span>
+            <% end %>
+        </li>
+        <li class="<%= 'active' if controller_name == ('pages') %>">
+            <a href="" title="dashboard_operation">
+                <em class="icon-question"></em>
+                <span>เกี่ยวกับเรา</span>
+            </a>
+        </li>
+        <li class="<%= 'active' if params[:tag] == 'กิจกรรม' %>">
+            <%= link_to ("#{profile_path(profile_id)}#{tag_path('กิจกรรม')}") do %>
+              <em class="icon-graph"></em>
+              <span>กิจกรรม</span>
+            <% end %>
+        </li> 
+        <li class="<%= 'active' if params[:tag] == 'บทความ' %>">
+            <%= link_to ("#{profile_path(profile_id)}#{tag_path('บทความ')}") do %>
+              <em class="icon-graph"></em>
+              <span>บทความ</span>
+            <% end %>
+        </li> 
+        <li class="<%= 'active' if params[:tag] == 'เอกสาร' %>">
+            <%= link_to ("#{profile_path(profile_id)}#{tag_path('เอกสาร')}") do %>
+              <em class="icon-graph"></em>
+              <span>เอกสาร</span>
+            <% end %>
+        </li> 
+         
+      </ul>
+      <div class="text-center mt-xl">
+        <p><button type="button" class="btn btn-labeled btn-info">
+          <span class="btn-label"><i class="fa fa-share"></i>
+         </span>แชร์โปรไฟล์นี้</button></p>
+      </div>
+      <!-- END sidebar nav-->
+   </nav>
+</div>
+<!-- END Sidebar (left)-->

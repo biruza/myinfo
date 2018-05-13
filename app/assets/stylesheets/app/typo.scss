@@ -1,0 +1,18 @@
+// ========================================================================
+//   Component: typo.less
+// ========================================================================
+ 
+
+@import url(//fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin);
+
+body {
+  color: #656565;
+  font-weight:300;
+
+}
+
+h1, h2, h3, h4, .sidebar, .navbar-nav, .panel-footer {
+	font-family: 'Kanit', sans-serif;
+  	font-weight: 400;
+}
+
