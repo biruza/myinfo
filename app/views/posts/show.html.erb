@@ -4,14 +4,22 @@
          <div class="panel panel-default">
             <div class="panel-heading">
                <div class="bb">
-                  <h2 class="text-lg"><%= @post.title %></h2>
-                  <p>Tags: 
-                     <% @post.tag_list.each do |tag| %>
-                        <%= link_to tag, tag_path(tag), class: "mb-sm btn btn-primary btn-outline btn-xs" %>
-                     <% end %>
-                  </p> 
+                  <h2 class=" mb-xl"><%= @post.title %></h2>
                   <p class="clearfix">
                      <span class="pull-left">
+                        <small>
+                           <% if @post.categories && params[:profile_id] %>
+                           หมวดหมู่: 
+                           <% @categories.each do |category| %>
+                              <% if @post.categories.include?(category.id.to_s) %>
+                                 <%= link_to category.title , "#{profile_path(params[:profile_id])}/categories/#{category.id}" , class: "btn btn-xs btn-green btn-outline" %>
+                                 </label>
+                              <% end %> 
+                           <% end %>
+                           <% end %>  
+                        </small>
+                     </span>
+                     <span class="pull-right">
                         <small class="mr-sm">
                            โดย 
                            <%= link_to (profile_path(@post.user.id)) do %>
@@ -44,7 +52,17 @@
             <div class="panel-body">
             	
                <%= @post.body %>
-               
+               <hr>
+               <p><small>Tags: 
+                     <% @post.tag_list.each do |tag| %>
+
+                        <% if params[:profile_id] %>
+                           <%= link_to tag, "#{profile_path(params[:profile_id])}/tags/#{tag}", class: "mb-sm btn btn-primary btn-outline btn-xs" %>
+                        <% else %>
+                           <%= link_to tag, tag_path(tag), class: "mb-sm btn btn-primary btn-outline btn-xs" %>
+                        <% end %>
+                     <% end %></small>
+               </p> 
                <hr>
                <div role="group" aria-label="..." class="btn-group">
                   <button type="button" class="btn btn-default">

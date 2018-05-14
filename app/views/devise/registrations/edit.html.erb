@@ -1,66 +1,113 @@
-  <div id="page_wrapper">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h3>แก้ไข <%= resource_name.to_s.humanize %></h3>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
+      <div class="panel-body">
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'อีเมล์' , class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'รหัสผ่าน' , class: "col-sm-2 control-label" %> <i>(ถ้าไม่ได้เปลี่ยนรหัสผ่าน ไม่ต้องกรอกรหัสใหม่)</i>
+              <div class="col-sm-10">
+                <%= f.password_field :password, autocomplete: "off" %>
+                <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> ตัวอักษรเป็นอย่างน้อย</em>
+               <% end %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'ยืนยันรหัสผ่าน' , class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, autocomplete: "off" , class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'รหัสผ่านปัจจุบัน' , class: "col-sm-2 control-label" %> <i>(ถ้ามีการแก้ไขข้อมูล ให้กรอกรหัสผ่านปัจจุบันด้วย)</i>
+              <div class="col-sm-10">
+                <%= f.password_field :current_password, autocomplete: "off" , class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'ชื่อ' , class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :firstname,required: true, class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'นามสกุล' , class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :surname,required: true, class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <div class="col-sm-2"> 
+              </div>
+              <div class="col-sm-10">
+                <% if :avatar %>
+                  <%= image_tag(current_user.avatar.url(:thumb)) %>
+                <% end %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <%= f.label 'รูปประกอบ', class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.file_field :avatar , class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group">
+              <div class="col-sm-2"> 
+              </div>
+              <div class="col-sm-10">
+                <%= f.submit "อัพเดท",  :class => 'btn btn-primary' %>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+
+        <p>
+        <%= link_to "ย้อนกลับ", :back %>
+        </p>
+
+
+      </div>
     </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :firstname %><br />
-      <%= f.text_field :firstname,required: true, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :surname %><br />
-      <%= f.text_field :surname,required: true, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <% if :avatar %>
-        <%= image_tag(current_user.avatar.url(:thumb)) %>
-      <% end %>
-    </div>
-
-    <div class="field">
-        <%= f.label :avatar, class: ''  %>
-        <%= f.file_field :avatar , class: 'form-control' %>
-    </div
-
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  </div>
 </div>

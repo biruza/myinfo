@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: 5c2d2d307e7d543521ece38a68ddb7940c548c25
+  specs:
+    bcrypt (3.1.11)
+
+GIT
   remote: https://github.com/mbleigh/acts-as-taggable-on
   revision: 38fefffc8f104455f87fdccd77841a2f550b16c6
   specs:
@@ -48,7 +54,6 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.2)
@@ -72,7 +77,6 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     devise (4.4.3)
-      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
       responders
@@ -80,6 +84,7 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
+    ffi (1.9.23-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.0.1)
@@ -108,6 +113,8 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.2-x86-mingw32)
+      mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     paperclip (6.0.0)
       activemodel (>= 4.2.0)
@@ -116,6 +123,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.0.0)
+    pg (1.0.0-x86-mingw32)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -164,7 +172,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.11.0)
+    selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     spring (2.0.2)
@@ -189,6 +197,8 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2018.5)
+      tzinfo (>= 1.0.0)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
@@ -206,13 +216,15 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   acts-as-taggable-on!
+  bcrypt!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  devise
+  devise (~> 4.3)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   paperclip (~> 6.0.0)

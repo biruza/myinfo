@@ -6,10 +6,10 @@
       <ul class="nav">
        <!-- Iterates over all sidebar items-->
        <li class="bb mt">
-          <%= link_to(raw("<em class='icon-speedometer'></em><span>รวมโปรไฟล์</span>") , profiles_path) %>
+          <%= link_to(raw("<em class='icon-notebook'></em><span>รวมโปรไฟล์</span>") , profiles_path) %>
         </li>
         <li class="bb mt">
-          <%= link_to(raw("<em class='icon-speedometer'></em><span>รวมโพส</span>") , posts_path) %>
+          <%= link_to(raw("<em class='icon-grid'></em><span>รวมโพส</span>") , posts_path) %>
         </li>
 
         <li class="bb mb-xl">
@@ -60,20 +60,20 @@
                 <span>เกี่ยวกับเรา</span>
             </a>
         </li>
-        <li class="<%= 'active' if params[:tag] == 'กิจกรรม' %>">
-            <%= link_to ("#{profile_path(profile_id)}#{tag_path('กิจกรรม')}") do %>
+        <li class="<%= 'active' if params[:cate_id] == 1 %>">
+            <%= link_to ("#{profile_path(profile_id)}/categories/1") do %>
               <em class="icon-graph"></em>
               <span>กิจกรรม</span>
             <% end %>
         </li> 
-        <li class="<%= 'active' if params[:tag] == 'บทความ' %>">
-            <%= link_to ("#{profile_path(profile_id)}#{tag_path('บทความ')}") do %>
+        <li class="<%= 'active' if params[:cate_id] == 2 %>">
+            <%= link_to ("#{profile_path(profile_id)}/categories/2") do %>
               <em class="icon-graph"></em>
               <span>บทความ</span>
             <% end %>
         </li> 
-        <li class="<%= 'active' if params[:tag] == 'เอกสาร' %>">
-            <%= link_to ("#{profile_path(profile_id)}#{tag_path('เอกสาร')}") do %>
+        <li class="<%= 'active' if params[:cate_id] == 3 %>">
+            <%= link_to ("#{profile_path(profile_id)}/categories/3") do %>
               <em class="icon-graph"></em>
               <span>เอกสาร</span>
             <% end %>

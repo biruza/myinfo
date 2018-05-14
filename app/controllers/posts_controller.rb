@@ -3,10 +3,19 @@ class PostsController < ApplicationController
 	layout :resolve_layout
 
 	def index
+		@categories = Category.all
 		if params[:profile_id]
 			@user = User.find(params[:profile_id])
 			if params[:tag]
 				@post = @user.posts.tagged_with(params[:tag]).order("created_at DESC")
+			elsif params[:cate_id]
+				@post = []
+				@temp_post = @user.posts.order("created_at DESC")
+				@temp_post.each do |temp_post|
+					if temp_post.categories.include?(params[:cate_id])
+						@post << temp_post
+					end 
+				end
 			else
 				@post = @user.posts.order("created_at DESC")
 			end
@@ -17,6 +26,8 @@ class PostsController < ApplicationController
 				@post = Post.all.order("created_at DESC")
 			end
 		end
+
+
 	end
 
 	def new
@@ -25,6 +36,7 @@ class PostsController < ApplicationController
 	end
 
 	def create
+		@categories = Category.all
 		@post = current_user.posts.build(post_params)
 		if @post.save
 			redirect_to @post
