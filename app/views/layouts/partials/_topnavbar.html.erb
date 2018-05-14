@@ -70,7 +70,7 @@
          <% if !user_signed_in? %>
          <li>
             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-            <%= link_to (new_user_session_path) ,id: "user-block-toggle" , :"data-toggle" => "collapse"  do %>
+            <%= link_to (new_user_session_path) ,id: "user-block-toggle" do %>
                <em class="icon-login"></em> เข้าสู่ระบบ
             <% end %>
          </li>
