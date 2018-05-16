@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'posts#index', as: :tag
   get 'profiles/:profile_id/tags/:tag', to: 'posts#index'
   get 'profiles/:profile_id/categories/:cate_id', to: 'posts#index'
+  get 'profiles/:search_keyword', to: 'profiles#index'
   #root "posts#index"
   root to: "posts#index"
 end

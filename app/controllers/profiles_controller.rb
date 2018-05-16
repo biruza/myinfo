@@ -8,10 +8,19 @@ class ProfilesController < ApplicationController
 	end
 
 	def index
-		@profile = User.all.order("created_at DESC")
+
+		@search = if params[:formsearch][:search_keyword]
+			@profile = User.where('firstname LIKE ?',"%#{params[:formsearch][:search_keyword]}").order("created_at DESC")
+		else
+			@profile = User.all.order("created_at DESC")
+		end
 	end
 
 	private
+
+	def profile_params
+		params.require(:formsearch).permit(:search_keyword)
+	end
 
 	def resolve_layout
 		case action_name

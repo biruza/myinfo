@@ -18,16 +18,12 @@
       <ul class="nav navbar-nav hidden-sm hidden-xs">
          <!-- Search icon-->
          <li>
-            <form action="" class="form">
-               <div class="input-group input-group-sm pt pb" style="width: 260px; display: inline-block;">
-                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:200px" class="form-control input-lg radius-clear">
-                  <span class="input-group-btn">
-                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
-                        <strong>ค้นหา</strong>
-                     </button>
-                  </span>
-               </div>
-            </form>
+ 
+            <%= form_for :formsearch, url: profiles_path, method: :get do |f| %>
+               <%= f.text_field :search_keyword %>
+               <%= f.submit "บันทึก" ,  :class => 'btn btn-primary' %>
+            <% end %>
+
          </li>
          <!-- END lock screen-->
       </ul>
