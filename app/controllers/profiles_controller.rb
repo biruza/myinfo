@@ -8,12 +8,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def index
-
-		@search = if params[:formsearch][:search_keyword]
-			@profile = User.where('firstname LIKE ?',"%#{params[:formsearch][:search_keyword]}").order("created_at DESC")
-		else
-			@profile = User.all.order("created_at DESC")
-		end
+		@profile = User.search(params[:search]).order('firstname DESC').paginate(:per_page => 5, :page => params[:page])
 	end
 
 	private

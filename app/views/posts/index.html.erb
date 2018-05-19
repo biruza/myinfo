@@ -12,15 +12,15 @@
 </h3>
 <div class="row">
 	<% @post.each do |post|  %>
-		<div class="col-lg-4">
+		<div class="col-md-6">
             <div class="panel">
               <% if post.image_file_name %>
                   <% if params[:id] %>
-					       <%= link_to (image_tag post.image.url(:medium)), "#{profile_path}/posts/#{post.id}", class: "img-responsive" %>
+					       <%= link_to (image_tag post.image.url(:medium) , class: "img-responsive"), "#{profile_path}/posts/#{post.id}" , class: "posts-img" %>
                  <% elsif params[:profile_id] %>
-                      <%= link_to (image_tag post.image.url(:medium)), "#{profile_path(params[:profile_id])}/posts/#{post.id}", class: "img-responsive" %>
+                      <%= link_to (image_tag post.image.url(:medium) , class: "img-responsive"), "#{profile_path(params[:profile_id])}/posts/#{post.id}" , class: "posts-img" %>
 				     <% else %>
-					       <%= link_to (image_tag post.image.url(:medium)), "/posts/#{post.id}", class: "img-responsive" %>
+					       <%= link_to (image_tag post.image.url(:medium) , class: "img-responsive"), "/posts/#{post.id}", class: "posts-img" %>
 				     <% end %>
 				<% end %>
                <div class="panel-body">

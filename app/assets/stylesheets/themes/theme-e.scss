@@ -55,13 +55,18 @@ $offsidebar-color:        $text-color;
 /* ========================================================================
    Component: layout
  ========================================================================== */
-
+body {
+  background-color: #01456a!important;
+}
 body,
 .wrapper > section {
   background-color: $content-bg;
 }
 .wrapper > .aside {
   background-color: $aside-bg;
+}
+.wrapper > footer {
+  background-color: $content-bg;
 }
 
 /* ========================================================================
@@ -226,3 +231,16 @@ body,
   background-color: $offsidebar-bg;
   color: $offsidebar-color;
 }
+
+/* ========================================================================
+   Card
+ ========================================================================== */
+ .posts-img .img-responsive {
+  width:100%;
+ }
+ .posts-img {
+  width:100%;
+  overflow:hidden;
+  max-height:320px;
+  display:inline-block;
+ }

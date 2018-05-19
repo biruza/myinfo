@@ -1,0 +1,15 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="pretty">
+  <tr>
+    <th><%=   "firstname" %></th>
+    <th><%=   "surname" %></th>
+  </tr>
+  <% for profile in @profile %>
+  <tr>
+    <td><%= profile.firstname %></td>
+    <td><%= profile.surname %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @profile %>

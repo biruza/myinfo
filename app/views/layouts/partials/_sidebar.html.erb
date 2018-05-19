@@ -8,7 +8,7 @@
         <li class="mb-xl">
           <div class="panel-body mt-xl">
            <div class="">
-              <div class="text-center">\
+              <div class="text-center">
                  <img src="<%= image_path('logo_tru_400.png') %>" alt="มหาวิทยาลัยราชภัฏเทพสตรี" class="img-thumbnail img-circle thumb128">
               </div>
            </div>
@@ -20,10 +20,10 @@
           </div>  
         </li>
 
-        <li class="bb mt">
+        <li class="<%= 'active' if controller_name == ('profiles') %> bb mt">
           <%= link_to(raw("<em class='icon-notebook'></em><span>รวมโปรไฟล์</span>") , profiles_path) %>
         </li>
-        <li class="bb mt">
+        <li class="<%= 'active' if controller_name == ('posts') %> bb mt">
           <%= link_to(raw("<em class='icon-grid'></em><span>รวมโพส</span>") , posts_path) %>
         </li>
 

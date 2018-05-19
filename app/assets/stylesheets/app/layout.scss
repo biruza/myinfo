@@ -96,7 +96,8 @@ html, body {
   // Contains the main content
   > section {
     position: relative;
-    height: 100%;
+    height:auto;
+    min-height:700px;
     margin-left: 0;
     // overflow: hidden;
     z-index: $z-index-main-section;
@@ -517,6 +518,10 @@ _:-ms-lang(x), .layout-fixed .wrapper > .aside > .aside-inner {
 // -----------------------------
 
 .layout-boxed {
+
+  
+  height:auto;
+  min-height:100%;
 
   @media only screen and (min-width: $mq-desktop) {
     overflow: auto !important;

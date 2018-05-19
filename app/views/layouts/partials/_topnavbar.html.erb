@@ -15,50 +15,28 @@
    <!-- START Nav wrapper-->
    <div class="nav-wrapper">
       <!-- START Left navbar-->
-      <ul class="nav navbar-nav hidden-sm hidden-xs">
+      <ul class="nav navbar-nav col-sm-4">
          <!-- Search icon-->
          <li>
- 
-            <%= form_for :formsearch, url: profiles_path, method: :get do |f| %>
-               <%= f.text_field :search_keyword %>
-               <%= f.submit "บันทึก" ,  :class => 'btn btn-primary' %>
-            <% end %>
+
+
+         <%= form_tag profiles_path, :method => 'get', :id => "profiles_search" , :class => "form-horizontal mt ml" do %>
+            <div class="input-group">
+              <%= hidden_field_tag :direction, params[:direction] %>
+              <%= hidden_field_tag :sort, params[:sort] %>
+                <%= text_field_tag :search, params[:search] , :placeholder => "ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" , :class => "form-control" %>
+                     <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                           <em class="fa fa-search"></em>
+                        </button>
+                     </span>
+            </div>
+         <% end %>
 
          </li>
          <!-- END lock screen-->
       </ul>
-      <ul class="nav navbar-nav hidden-xs hidden-md hidden-lg">
-         <!-- Search icon-->
-         <li>
-            <form action="" class="form">
-               <div class="input-group input-group-sm pt pb" style="width: 200px; display: inline-block;">
-                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:150px" class="form-control input-lg radius-clear">
-                  <span class="input-group-btn">
-                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
-                        <strong>ค้นหา</strong>
-                     </button>
-                  </span>
-               </div>
-            </form>
-         </li>
-         <!-- END lock screen-->
-      </ul>
-      <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg bg-gray-light col-md-12">
-         <!-- Search icon-->
-         <li>
-            <form action="" class="form">
-               <div class="input-group input-group-sm pt pb ml" style="width: 100%; display: inline-block;">
-                  <input type="text" name="term" placeholder="ใส่ชื่อโปรไฟล์ที่ต้องการค้นหา" style="width:90%" class="form-control input-lg radius-clear">
-                  <span class="input-group-btn">
-                     <button type="button" class="btn btn-info btn-lg b0 radius-clear">
-                        <strong>ค้นหา</strong>
-                     </button>
-                  </span>
-               </div>
-            </form>
-         </li>
-         <!-- END lock screen-->
-      </ul>
+      
       <!-- END Left navbar-->
       <!-- START Right Navbar-->
       <ul class="nav navbar-nav navbar-right">

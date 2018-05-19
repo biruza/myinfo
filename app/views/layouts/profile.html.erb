@@ -26,29 +26,32 @@
 </head>
 
 <body>
-   <div class="wrapper">
       <!-- top navbar-->
       <header class="topnavbar-wrapper">
          <%= render partial: "layouts/partials/topnavbar" %>
       </header>
-      <!-- sidebar-->
-      <aside class="aside">
-         <%= render partial: "layouts/partials/sidebar_profile" %>
-      </aside>
-     <!-- offsidebar-->
-      <aside class="offsidebar hide"> 
-      </aside>
-      <!-- Main section-->
-      <section>
-         <!-- Page content-->
-         <div class="content-wrapper">
-            <%= yield %>
+
+      <div class="layout-boxed">
+         <div class="wrapper">
+            <!-- sidebar-->
+            <aside class="aside">
+               <%= render partial: "layouts/partials/sidebar_profile" %>
+            </aside>
+           <!-- offsidebar-->
+            <aside class="offsidebar hide"> 
+            </aside>
+            <!-- Main section-->
+            <section>
+               <!-- Page content-->
+               <div class="content-wrapper">
+                  <%= yield %>
+               </div>
+            </section>
+            <!-- Page footer-->
+            <footer>
+               <%= render partial: "layouts/partials/footer" %>
+            </footer>
          </div>
-      </section>
-      <!-- Page footer-->
-      <footer>
-         <%= render partial: "layouts/partials/footer" %>
-      </footer>
    </div>
    <!-- =============== VENDOR SCRIPTS ===============--> 
    <!-- =============== VIEW VENDOR SCRIPTS ===============--> 
