@@ -15,3 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 
 Rails.application.config.assets.precompile += %w( themes/theme-e.css )
+Rails.application.config.assets.precompile += %w( social-share-button.css )

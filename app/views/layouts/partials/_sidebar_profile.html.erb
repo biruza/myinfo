@@ -26,6 +26,7 @@
               <h4 class="m0 text-white"><%= @user.firstname %> <%= @user.surname %></h4>
               <p class="text-muted">อาจารย์ประจำวิชา</p>
            </div>
+           <!--
            <div class="panel-body text-center text-muted">
               <div class="row row-table">
                  <div class="col-xs-4 br">
@@ -42,6 +43,8 @@
                  </div>
               </div>
            </div>
+-->
+
           </div>  
         </li>
 
@@ -83,9 +86,12 @@
          
       </ul>
       <div class="text-center mt-xl">
+        <!--
         <p><button type="button" class="btn btn-labeled btn-info">
           <span class="btn-label"><i class="fa fa-share"></i>
          </span>แชร์โปรไฟล์นี้</button></p>
+-->     <p class="text-white">แชร์โปรไฟล์นี้</p>
+         <%= social_share_button_tag(@user.firstname, :image => @user.avatar_url(:thumbnail), desc: "มหาวิทยาลัยราชภัฏเทพสตรี") %>
       </div>
       <!-- END sidebar nav-->
    </nav>

@@ -69,25 +69,8 @@
                      <% end %></small>
                </p> 
                <hr>
-               <div role="group" aria-label="..." class="btn-group">
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-facebook text-muted"></em>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-twitter text-muted"></em>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-google-plus text-muted"></em>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-tumblr text-muted"></em>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-pinterest text-muted"></em>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                     <em class="fa fa-share-alt text-muted"></em>
-                  </button>
+               <div class="social_share_button_content">
+               <%= social_share_button_tag(@post.title,  :image => @post.cover_photo_url, desc: @post.body) %>
                </div>
             </div>
          </div> 

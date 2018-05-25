@@ -12,6 +12,7 @@
  *
  */
 
+
 // Override bootstrap variables
 @import "app/variables";
 
@@ -105,6 +106,17 @@
 // Icon
 @import "font-awesome/css/font-awesome.min";
 @import "simple-line-icons/css/simple-line-icons";
+
+
+// Social
+
+//@import "social-share-button.css.erb";
+
+
+
+
+
+// Uppy & Shrine
 
 .image-preview {
   margin-bottom: 20px;
