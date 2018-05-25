@@ -45,13 +45,18 @@
                </div>
             </div>
             <div class="panel-body">
-            	<% if @post.image_file_name %>
-   			<%= image_tag @post.image.url(:medium) , class: "" %>
-   			<% end %>
+            	<% if @post.cover_photo_url %>
+   			      <%= image_tag @post.cover_photo_url(:thumbnail) , class: "" %>
+   			   <% end %>
             </div>
             <div class="panel-body">
             	
                <%= @post.body %>
+               <ul class="list-unstyled file-upload-list" id="post-picture-list">
+                  <% @post.pictures.each_with_index do |picture, idx| %>
+                     <%= image_tag picture.image_url(:thumbnail) , width: 300 , class: "" %>
+                  <% end %>
+               </ul>
                <hr>
                <p><small>Tags: 
                      <% @post.tag_list.each do |tag| %>

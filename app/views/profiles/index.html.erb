@@ -12,7 +12,9 @@
          <div class="panel-body text-center">
             
             <%= link_to (profile_path(profile.id)) do %>
-               <%= image_tag(profile.avatar.url(:medium), class: "center-block img-responsive img-circle thumb96") %>
+               <% if profile.avatar_data %>
+                  <%= image_tag(profile.avatar_url(:thumbnail), class: "center-block img-responsive img-circle thumb96") %>
+               <% end %>
             <% end %>
 
 

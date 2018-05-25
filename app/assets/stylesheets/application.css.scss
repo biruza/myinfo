@@ -106,3 +106,21 @@
 @import "font-awesome/css/font-awesome.min";
 @import "simple-line-icons/css/simple-line-icons";
 
+.image-preview {
+  margin-bottom: 20px;
+}
+
+.file-upload-preview[src=""] {
+  visibility: hidden;
+}
+
+.file-upload-list li {
+  margin-bottom: 20px;
+}
+
+.image-preview {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+

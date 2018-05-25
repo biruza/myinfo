@@ -38,11 +38,20 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 
 #gem 'devise'
 
-gem "paperclip", "~> 6.0.0"
-
 gem 'will_paginate', '~> 3.1.0'
 
 gem 'jquery-rails'
+
+gem 'bootstrap-sass' 
+
+# Shrine
+gem 'sucker_punch', '~> 2.0'
+gem 'dotenv-rails'
+gem 'shrine', '~> 2.11'
+gem 'aws-sdk-s3', '~> 1.2'
+gem 'image_processing', '~> 1.0'
+
+gem 'social-share-button', '0.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

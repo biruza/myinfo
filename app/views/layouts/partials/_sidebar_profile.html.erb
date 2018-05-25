@@ -16,7 +16,9 @@
           <div class="panel-body">
            <div class="">
               <div class="text-center">
-                 <%= image_tag(@user.avatar.url(:medium), class: "img-thumbnail img-circle thumb128") %>
+                <% if @user.avatar_data %>
+                  <%= image_tag(@user.avatar_url(:thumbnail), class: "img-thumbnail img-circle thumb128") %>
+                  <% end %>
               </div>
            </div>
            <div class="text-center mt-xl">

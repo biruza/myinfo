@@ -1,0 +1,19 @@
+<li>
+  <div class="media">
+    <div class="media-left">
+      <%= image_tag picture.image_url(:thumbnail).to_s, size: 150, class: "img-thumbnail file-upload-preview media-object", id: "post-picture-preview-#{idx}" %>
+    </div>
+    <div class="media-body">
+      <div class="form-group">
+        <%= hidden_field_tag "post[pictures_attributes][#{idx}][image]", picture.cached_image_data, id: "post-picture-upload-result-#{idx}" %>
+        <%= file_field_tag "post[pictures_attributes][#{idx}][image]", accept: ImageUploader::ALLOWED_TYPES.join(","), id: "post-picture-field-#{idx}", data: { preview_element: "post-picture-preview-#{idx}", upload_result_element: "post-picture-upload-result-#{idx}", upload_server: upload_server } %>
+      </div>
+      <div class="form-group">
+        <%= label_tag "post-picture-title-field-#{idx}", "Title" %>
+        <%= text_field_tag "post[pictures_attributes][#{idx}][title]", picture.title, id: "post-picture-title-field-#{idx}" %>
+      </div>
+      <%= hidden_field_tag "post[pictures_attributes][#{idx}][id]", picture.id if picture.id %>
+      Remove picture: <%= check_box_tag "post[pictures_attributes][#{idx}][_destroy]", value: true %>
+    </div>
+  </div>
+</li>

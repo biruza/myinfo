@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511053735) do
+ActiveRecord::Schema.define(version: 20180525012347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,19 +22,23 @@ ActiveRecord::Schema.define(version: 20180511053735) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "post_id"
+    t.text "image_data"
+    t.string "title"
+    t.index ["post_id"], name: "index_pictures_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.integer "category_id"
     t.text "categories"
-    t.index ["category_id"], name: "index_posts_on_category_id"
+    t.text "cover_photo_data"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -78,10 +82,7 @@ ActiveRecord::Schema.define(version: 20180511053735) do
     t.datetime "updated_at", null: false
     t.string "firstname"
     t.string "surname"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.text "avatar_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -4,15 +4,14 @@
 		<div class="panel-body">
 			<%= form_for @post do |f| %>
 				<% if @post.errors.any? %>
-					<div id="errors">
-						<h2><%= pluralize(@post.errors.count, "error") %> xxxx </h2>
-						<ul>
-							<% @post.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-							<% end %>
-						</ul>
-					</div>
-				<% end %>
+				    <div class="validation-errors alert alert-danger">
+				      <ul class="list-unstyled">
+				        <% @post.errors.full_messages.each do |message| %>
+				          <li>Album <%= message %></li>
+				        <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
 				<fieldset>
 					<div class="form-group">
 						<%= f.label "หัวเรื่อง" , class: "col-sm-2 control-label" %>
@@ -42,14 +41,18 @@
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">รูปประกอบ</label>
+						<label class="col-sm-2 control-label">รูปปก</label>
 						<div class="col-sm-10">
-						<% if @post.image_file_name %>
-							<%= image_tag @post.image.url(:medium) , class: "pt-xl pb-xl" %>
-						<% end %>
-							<%= f.file_field :image ,class: "form-control filestyle" %>
+						<%= f.hidden_field :cover_photo, value: @post.cached_cover_photo_data, id: "post-cover-photo-upload-result" %>
+    					<%= f.file_field :cover_photo, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "preview-cover-photo", upload_result_element: "post-cover-photo-upload-result" } %>
+
+    						<div class="image-preview">
+							    <%= image_tag @post.cover_photo_url(:thumbnail).to_s, width: 300, class: "img-thumbnail file-upload-preview", id: "preview-cover-photo" %>
+							  </div>
+
 						</div>
 					</div>
+
 				</fieldset>
 
 				<a class="btn btn-default mb-xl" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -66,6 +69,19 @@
 								<%= f.text_area :body, class: "form-control" %>
 							</div>
 						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+    						<%= f.label "รูปอื่น ๆ (ใส่ได้มากกว่า 1 ภาพ)", class: "col-sm-2 control-label" %>
+						    <div class="col-sm-10">
+						      <%= file_field_tag "files[]", multiple: true, accept: ImageUploader::ALLOWED_TYPES.join(","), id: "post-picture-field", data: { template: "template-picture", upload_list: "post-picture-list", upload_server: upload_server } %>
+						    	<ul class="list-unstyled file-upload-list" id="post-picture-list">
+    								<% @post.pictures.each_with_index do |picture, idx| %>
+      								<%= render partial: "picture", locals: { picture: picture, idx: idx } %>
+    								<% end %>
+  								</ul>
+						    </div>
+						 </div>
 					</fieldset>
 					<fieldset>
 						<div class="form-group">

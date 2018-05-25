@@ -38,16 +38,22 @@ class PostsController < ApplicationController
 	def create
 		@categories = Category.all
 		@post = current_user.posts.build(post_params)
+
+		#@post = Post.new(post_params)
+
 		if @post.save
-			redirect_to @post
+
+	      	redirect_to @post
+
 		else
-			render 'new'
-		end
+			render action: "new"
+    	end
 		
 	end
 
 	def show
 		@categories = Category.all
+		#@pictures = Picture.find(params[:post_id])
 		if params[:profile_id]
 			@user = User.find(params[:profile_id])
 			@post = @user.posts.find(params[:id])
@@ -69,7 +75,7 @@ class PostsController < ApplicationController
 			if @post.update(post_params)
 				redirect_to @post
 			else
-				render 'edit'
+				render action: "edit"
 			end
 		else
 			redirect_to root_path
@@ -89,7 +95,8 @@ class PostsController < ApplicationController
 	private
 
 		def post_params
-			params.require(:post).permit(:title,:body,:image,:tag_list,categories:[])
+			#params.require(:post).permit(:title,:body,:cover_photo,:tag_list,categories:[])
+			params.require(:post).permit!
 		end
 
 		def resolve_layout
